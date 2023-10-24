@@ -1,4 +1,5 @@
-import 'package:design/pages/animations_page.dart';
+import 'package:design/challenges/cuadrado_animado.dart';
+// import 'package:design/pages/animations_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const AnimationsPage(),
+      home: const CuadradoAnimadoPage(),
     );
   }
 }
