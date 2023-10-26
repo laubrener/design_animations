@@ -1,5 +1,6 @@
+import 'package:design/pages/graficas_circulares_page.dart';
 import 'package:flutter/material.dart';
-import 'package:design/pages/circular_progress_page.dart';
+// import 'package:design/labs/circular_progress_page.dart';
 // import 'package:design/challenges/cuadrado_animado.dart';
 // import 'package:design/pages/animations_page.dart';
 // import 'package:design/pages/headers_page.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const CircularProgressPage(),
+      home: const GraficasCircularesPage(),
     );
   }
 }

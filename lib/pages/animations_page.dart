@@ -80,8 +80,8 @@ class _AnimatedSquareState extends State<AnimatedSquare>
         animation: controller,
         child: _Rectangulo(),
         builder: (BuildContext context, Widget? childRectangulo) {
-          print('opacidad: ${opacidad.status}');
-          print('rotacion: ${rotation.status}');
+          // print('opacidad: ${opacidad.status}');
+          // print('rotacion: ${rotation.status}');
 
           return Transform.translate(
             offset: Offset(moverDerecha.value, 0),
