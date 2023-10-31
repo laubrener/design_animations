@@ -1,5 +1,6 @@
-import 'package:design/pages/slideshow_page.dart';
+import 'package:design/pages/pinterest_page.dart';
 import 'package:flutter/material.dart';
+// import 'package:design/pages/slideshow_page.dart';
 // import 'package:design/pages/graficas_circulares_page.dart';
 // import 'package:design/challenges/cuadrado_animado.dart';
 // import 'package:design/pages/animations_page.dart';
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const SlideshowPage(),
+      home: const PinterestPage(),
     );
   }
 }
