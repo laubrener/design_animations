@@ -214,13 +214,13 @@ class IconHeader extends StatelessWidget {
               const SizedBox(height: 80),
               Text(
                 subTitulo,
-                style: TextStyle(fontSize: 20, color: colorBlanco),
+                style: TextStyle(fontSize: 16, color: colorBlanco),
               ),
               const SizedBox(height: 20),
               Text(
                 titulo,
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 24,
                   color: colorBlanco,
                   fontWeight: FontWeight.bold,
                 ),
