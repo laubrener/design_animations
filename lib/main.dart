@@ -1,5 +1,6 @@
-import 'package:design/pages/emergency_page.dart';
+import 'package:design/pages/sliver_list_page.dart';
 import 'package:flutter/material.dart';
+// import 'package:design/pages/emergency_page.dart';
 // import 'package:design/pages/pinterest_page.dart';
 // import 'package:design/pages/slideshow_page.dart';
 // import 'package:design/pages/graficas_circulares_page.dart';
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const EmergencyPage(),
+      home: const SliverListPage(),
     );
   }
 }
