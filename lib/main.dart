@@ -1,5 +1,6 @@
-import 'package:design/pages/animate_do/pagina1.dart';
 import 'package:flutter/material.dart';
+import 'package:design/pages/animate_do/pagina1.dart';
+// import 'package:design/pages/animate_do/twitter_page.dart';
 // import 'package:design/pages/sliver_list_page.dart';
 // import 'package:design/pages/emergency_page.dart';
 // import 'package:design/pages/pinterest_page.dart';
