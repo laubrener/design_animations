@@ -5,11 +5,11 @@ class SliverListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
         body: Stack(
       children: [
         MainScroll(),
-        const Positioned(
+        Positioned(
           bottom: -10,
           right: 0,
           child: _ButtonNewList(),
@@ -50,59 +50,10 @@ class _ButtonNewList extends StatelessWidget {
   }
 }
 
-class _ListaTareas extends StatelessWidget {
-  List<_ListItem> items = const [
-    _ListItem(
-      titulo: 'Orange',
-      color: Color(0xffF08F66),
-    ),
-    _ListItem(
-      titulo: 'Family',
-      color: Color(0xffF2A38A),
-    ),
-    _ListItem(
-      titulo: 'Subscriptions',
-      color: Color(0xffF7CDD5),
-    ),
-    _ListItem(
-      titulo: 'Books',
-      color: Color(0xffFCEBAF),
-    ),
-    _ListItem(
-      titulo: 'Orange',
-      color: Color(0xffF08F66),
-    ),
-    _ListItem(
-      titulo: 'Family',
-      color: Color(0xffF2A38A),
-    ),
-    _ListItem(
-      titulo: 'Subscriptions',
-      color: Color(0xffF7CDD5),
-    ),
-    _ListItem(
-      titulo: 'Books',
-      color: Color(0xffFCEBAF),
-    ),
-  ];
-  _ListaTareas({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: items.length,
-      itemBuilder: (context, index) => items[index],
-    );
-  }
-}
-
 class _ListItem extends StatelessWidget {
   final String titulo;
   final Color color;
   const _ListItem({
-    super.key,
     required this.titulo,
     required this.color,
   });
@@ -116,7 +67,10 @@ class _ListItem extends StatelessWidget {
       height: 130,
       decoration: BoxDecoration(
         color: color,
-        borderRadius: BorderRadius.circular(30),
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(60),
+          bottomRight: Radius.circular(60),
+        ),
       ),
       child: Text(
         titulo,
@@ -172,7 +126,7 @@ class Titulo extends StatelessWidget {
 }
 
 class MainScroll extends StatelessWidget {
-  List items = const [
+  final List items = const [
     _ListItem(
       titulo: 'Orange',
       color: Color(0xffF08F66),
@@ -206,7 +160,8 @@ class MainScroll extends StatelessWidget {
       color: Color(0xffFCEBAF),
     ),
   ];
-  MainScroll({super.key});
+
+  const MainScroll({super.key});
 
   @override
   Widget build(BuildContext context) {
