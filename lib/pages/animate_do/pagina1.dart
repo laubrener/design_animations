@@ -1,4 +1,5 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:design/pages/animate_do/notifications_page.dart';
 import 'package:design/pages/animate_do/twitter_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -41,7 +42,13 @@ class Pagina1Page extends StatelessWidget {
       ),
       floatingActionButton: ElasticInRight(
         child: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (BuildContext context) => const NotificationsPage()),
+            );
+          },
           child: const FaIcon(
             FontAwesomeIcons.play,
           ),
