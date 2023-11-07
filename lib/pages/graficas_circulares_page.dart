@@ -1,5 +1,8 @@
 import 'package:design/widgets/radial_progress.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../themes/theme.dart';
 
 class GraficasCircularesPage extends StatefulWidget {
   const GraficasCircularesPage({super.key});
@@ -13,6 +16,7 @@ class _GraficasCircularesPageState extends State<GraficasCircularesPage> {
 
   @override
   Widget build(BuildContext context) {
+    final appTheme = Provider.of<ThemeChanger>(context).currentTheme;
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -22,7 +26,7 @@ class _GraficasCircularesPageState extends State<GraficasCircularesPage> {
           }
           setState(() {});
         },
-        backgroundColor: Colors.blue,
+        backgroundColor: appTheme.indicatorColor,
         child: const Icon(Icons.refresh),
       ),
       body: Center(
@@ -34,7 +38,7 @@ class _GraficasCircularesPageState extends State<GraficasCircularesPage> {
             children: [
               CustomRadialProgress(porcentaje: porcentaje),
               CustomRadialProgress(
-                porcentaje: porcentaje,
+                porcentaje: porcentaje * 1.2,
                 color: Colors.blue,
               ),
             ],
@@ -43,11 +47,11 @@ class _GraficasCircularesPageState extends State<GraficasCircularesPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               CustomRadialProgress(
-                porcentaje: porcentaje,
+                porcentaje: porcentaje * 1.4,
                 color: Colors.purple,
               ),
               CustomRadialProgress(
-                porcentaje: porcentaje,
+                porcentaje: porcentaje * 1.6,
                 color: Colors.amber,
               ),
             ],
@@ -70,6 +74,8 @@ class CustomRadialProgress extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appTheme = Provider.of<ThemeChanger>(context).currentTheme;
+
     return Container(
       width: 180,
       height: 180,
@@ -77,11 +83,8 @@ class CustomRadialProgress extends StatelessWidget {
         porcentaje: porcentaje,
         color: color,
         grosorSecundario: 10,
+        colorSecundario: appTheme.textTheme.bodyLarge?.color,
       ),
-      // Text(
-      //   '${porcentaje.toInt()} %',
-      //   style: const TextStyle(fontSize: 50.0),
-      // ),
     );
   }
 }

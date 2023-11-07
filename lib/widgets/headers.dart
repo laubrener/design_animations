@@ -1,23 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+import '../themes/theme.dart';
+
+class HeadersPage extends StatefulWidget {
+  const HeadersPage({super.key});
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<HeadersPage> createState() => _HeadersPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _HeadersPageState extends State<HeadersPage> {
   @override
   Widget build(BuildContext context) {
+    final appTheme = Provider.of<ThemeChanger>(context).currentTheme;
     return Scaffold(
       body: Center(
         child: SizedBox(
           height: double.infinity,
           width: double.infinity,
           child: CustomPaint(
-            painter: WavedHeader(),
+            painter: ThirdHeader(color: appTheme.indicatorColor),
           ),
         ),
       ),
@@ -75,11 +79,15 @@ class TriangularHeader extends CustomPainter {
 }
 
 class ThirdHeader extends CustomPainter {
+  final Color color;
+
+  ThirdHeader({required this.color});
+
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint();
 
-    paint.color = const Color(0xff615AAB);
+    paint.color = color; // const Color(0xff615AAB);
     paint.style = PaintingStyle.fill;
 
     paint.strokeWidth = 5;
