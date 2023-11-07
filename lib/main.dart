@@ -1,32 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:design/pages/animate_do/pagina1.dart';
-// import 'package:design/pages/animate_do/twitter_page.dart';
-// import 'package:design/pages/sliver_list_page.dart';
-// import 'package:design/pages/emergency_page.dart';
-// import 'package:design/pages/pinterest_page.dart';
-// import 'package:design/pages/slideshow_page.dart';
-// import 'package:design/pages/graficas_circulares_page.dart';
-// import 'package:design/challenges/cuadrado_animado.dart';
-// import 'package:design/pages/animations_page.dart';
-// import 'package:design/pages/headers_page.dart';
+import 'package:design/themes/theme.dart';
+import 'package:design/pages/laucher_page.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(
+      create: (_) => ThemeChanger(2), child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    final currentTheme = Provider.of<ThemeChanger>(context).currentTheme;
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const Pagina1Page(),
+      theme: currentTheme,
+      home: const LauncherPage(),
     );
   }
 }
