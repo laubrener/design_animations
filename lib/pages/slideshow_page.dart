@@ -10,9 +10,32 @@ class SlideshowPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appTheme = Provider.of<ThemeChanger>(context);
+    bool isLarge;
+    if (MediaQuery.of(context).size.height > 500) {
+      isLarge = true;
+    } else {
+      isLarge = false;
+    }
+    const children = [
+      Expanded(child: MiSlideshow()),
+      Expanded(child: MiSlideshow()),
+    ];
     return Scaffold(
-        body: Slideshow(
+        body: isLarge
+            ? const Column(children: children)
+            : const Row(
+                children: children,
+              ));
+  }
+}
+
+class MiSlideshow extends StatelessWidget {
+  const MiSlideshow({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final appTheme = Provider.of<ThemeChanger>(context);
+    return Slideshow(
       slides: [
         SvgPicture.asset('assets/svgs/slide-1.svg'),
         SvgPicture.asset('assets/svgs/slide-2.svg'),
@@ -24,6 +47,6 @@ class SlideshowPage extends StatelessWidget {
           ? appTheme.currentTheme.indicatorColor
           : const Color(0xffFF5A7E),
       bulletPrimario: 17,
-    ));
+    );
   }
 }
