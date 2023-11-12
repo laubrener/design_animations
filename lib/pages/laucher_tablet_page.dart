@@ -1,26 +1,47 @@
+import 'package:design/labs/slideshow_page.dart';
+import 'package:design/models/layout_model.dart';
 import 'package:design/themes/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:design/routes/routes.dart';
 import 'package:provider/provider.dart';
 
-class LauncherPage extends StatelessWidget {
-  const LauncherPage({Key? key}) : super(key: key);
+class LauncherTabletPage extends StatelessWidget {
+  const LauncherTabletPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final appTheme = Provider.of<ThemeChanger>(context).currentTheme;
+    final appTheme = Provider.of<ThemeChanger>(context);
+    final layoutModel = Provider.of<LayoutModel>(context);
 
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Diseños de Flutter - Mobile',
+          'Diseños de Flutter - Tablet',
         ),
-        backgroundColor: appTheme.indicatorColor,
-        foregroundColor: appTheme.scaffoldBackgroundColor,
+        backgroundColor: appTheme.currentTheme.indicatorColor,
+        foregroundColor: appTheme.currentTheme.scaffoldBackgroundColor,
       ),
       drawer: const _MenuPrincipal(),
-      body: const _ListaOpciones(),
+      body: Row(
+        children: [
+          Container(
+            width: 300,
+            height: double.infinity,
+            child: const _ListaOpciones(),
+          ),
+          Container(
+            width: 1,
+            height: double.infinity,
+            color: appTheme.darkTheme
+                ? Colors.grey
+                : appTheme.currentTheme.indicatorColor,
+          ),
+          Expanded(
+            child: layoutModel.currentPage,
+          )
+        ],
+      ),
     );
   }
 }
@@ -51,10 +72,13 @@ class _ListaOpciones extends StatelessWidget {
                 color: appTheme.indicatorColor,
               ),
               onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (BuildContext context) => pageRoutes[i].page));
+                // Navigator.push(
+                //     context,
+                //     MaterialPageRoute(
+                //         builder: (BuildContext context) => pageRoutes[i].page));
+                final layoutModel =
+                    Provider.of<LayoutModel>(context, listen: false);
+                layoutModel.currentPage = pageRoutes[i].page;
               },
             ));
   }
