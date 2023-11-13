@@ -18,6 +18,14 @@ class EmergencyPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isLarge;
+
+    if (MediaQuery.of(context).size.height > 500) {
+      isLarge = true;
+    } else {
+      isLarge = false;
+    }
+
     final items = <ItemBoton>[
       ItemBoton(
         FontAwesomeIcons.carBurst,
@@ -106,17 +114,22 @@ class EmergencyPage extends StatelessWidget {
         .toList();
 
     return Scaffold(
-      body: Stack(
-        children: [
-          Container(
-            margin: const EdgeInsets.only(top: 200),
-            child: ListView(physics: const BouncingScrollPhysics(), children: [
-              const SizedBox(height: 80),
-              ...itemMap,
-            ]),
-          ),
-          const PageHeader()
-        ],
+      body: SafeArea(
+        child: Stack(
+          children: [
+            Container(
+              margin: EdgeInsets.only(top: isLarge ? 220 : 0),
+              child: SafeArea(
+                child:
+                    ListView(physics: const BouncingScrollPhysics(), children: [
+                  if (isLarge) const SizedBox(height: 80),
+                  ...itemMap,
+                ]),
+              ),
+            ),
+            if (isLarge) const PageHeader()
+          ],
+        ),
       ),
     );
   }

@@ -1,4 +1,3 @@
-import 'package:design/labs/slideshow_page.dart';
 import 'package:design/models/layout_model.dart';
 import 'package:design/themes/theme.dart';
 import 'package:flutter/material.dart';
