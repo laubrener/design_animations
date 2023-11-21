@@ -11,7 +11,6 @@ class PinterestPage extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => _MenuModel(),
       child: Scaffold(
-        // body: PinterestMenu(),
         body: Stack(
           children: [
             PinterestGrid(),
@@ -26,44 +25,52 @@ class PinterestPage extends StatelessWidget {
 class _PinterestMenuLocation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final widthScreen = MediaQuery.of(context).size.width;
+    double widthScreen = MediaQuery.of(context).size.width;
     final mostrar = Provider.of<_MenuModel>(context).mostrar;
     final appTheme = Provider.of<ThemeChanger>(context).currentTheme;
+
+    if (widthScreen > 500) {
+      widthScreen = widthScreen - 300;
+    }
 
     return Positioned(
       bottom: 30,
       child: Container(
-        color: Colors.transparent,
-        width: widthScreen,
-        child: Align(
-            child: PinterestMenu(
-          mostrar: mostrar,
-          backgroundColor: appTheme.scaffoldBackgroundColor,
-          activeColor: appTheme.indicatorColor,
-          items: [
-            PinterestButton(
-                onPressed: () {
-                  print('pie chart');
-                },
-                icon: Icons.pie_chart),
-            PinterestButton(
-                onPressed: () {
-                  print('search');
-                },
-                icon: Icons.search),
-            PinterestButton(
-                onPressed: () {
-                  print('notifications');
-                },
-                icon: Icons.notifications),
-            PinterestButton(
-                onPressed: () {
-                  print('supervise');
-                },
-                icon: Icons.supervised_user_circle),
-          ],
-        )),
-      ),
+          color: Colors.transparent,
+          width: widthScreen,
+          child: Row(
+            children: [
+              const Spacer(),
+              PinterestMenu(
+                mostrar: mostrar,
+                backgroundColor: appTheme.scaffoldBackgroundColor,
+                activeColor: appTheme.indicatorColor,
+                items: [
+                  PinterestButton(
+                      onPressed: () {
+                        print('pie chart');
+                      },
+                      icon: Icons.pie_chart),
+                  PinterestButton(
+                      onPressed: () {
+                        print('search');
+                      },
+                      icon: Icons.search),
+                  PinterestButton(
+                      onPressed: () {
+                        print('notifications');
+                      },
+                      icon: Icons.notifications),
+                  PinterestButton(
+                      onPressed: () {
+                        print('supervise');
+                      },
+                      icon: Icons.supervised_user_circle),
+                ],
+              ),
+              const Spacer(),
+            ],
+          )),
     );
   }
 }
@@ -100,6 +107,7 @@ class _PinterestGridState extends State<PinterestGrid> {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
+      padding: const EdgeInsets.all(5),
       controller: controller,
       gridDelegate: SliverQuiltedGridDelegate(
         crossAxisCount: 2,
